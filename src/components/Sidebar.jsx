@@ -44,16 +44,16 @@ const Sidebar = () => {
           {ListMenu.map((val) => {
             return (
               <>
-                <span key={val.name}>
+                <span key={val.name} className=" flex justify-center items-center ">
                   <Link
                     to={val.link}
-                    className="flex w-full [&>*]:w-full justify-center items-center space-x-2"
+                    className="flex w-full [&>*]:w-full items-center justify-between space-x-2"
                   >
-                    <i className={val.icon}></i>
+                    <i className={val.icon + " flex w-full"}></i>
                     {sidebar ? (
-                      <span>{val.name}</span>
+                      <span className="w-full">{val.name}</span>
                     ) : (
-                      <span className="hidden max-sm:block">{val.name}</span>
+                      <span className="hidden w-full max-sm:block">{val.name}</span>
                     )}
                   </Link>
                 </span>

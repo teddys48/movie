@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./page/Home";
 import Layout from "./components/Layout";
 import NotFound from "./page/NotFound";
+import TV from "./page/TV";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
           <Routes>
             <Route element={<Layout />}>
               <Route path="/" element={<Home />}></Route>
+              <Route path="/tv" element={<TV />}></Route>
               <Route path="*" element={<NotFound />}></Route>
             </Route>
           </Routes>

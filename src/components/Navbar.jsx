@@ -9,7 +9,7 @@ const Navbar = () => {
   return (
     <>
       <div className="flex w-full max-sm:flex-col max-sm:space-y-2 top-0 p-2 sticky bg-white/90 flex-row dark:bg-soft_dark/90 backdrop-blur-sm">
-        <div className="flex w-full justify-start items-center">
+        <div className="flex w-full justify-start items-center [&>*]:cursor-pointer">
           <span>
             {!Boolean(sidebar) ? (
               <i
