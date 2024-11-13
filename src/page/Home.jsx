@@ -208,14 +208,16 @@ const Home = () => {
                 {onWatch?.results?.map((val) => {
                   return (
                     <>
-                      <div className=" w-full h-full p-1">
-                        <img
-                          src={`https://image.tmdb.org/t/p/w500/${val.poster_path}`}
-                          width="auto"
-                        />
-                        <span className="flex w-full justify-center text-center">
-                          {val?.title}
-                        </span>
+                      <div className=" w-full h-full p-1 ">
+                        <div className="w-full flex flex-col h-full dark:bg-black  p-2">
+                          <img
+                            src={`https://image.tmdb.org/t/p/w500/${val.poster_path}`}
+                            width="auto"
+                          />
+                          <span className="flex w-full text-2xl justify-center text-center">
+                            {val?.title}
+                          </span>
+                        </div>
                       </div>
                     </>
                   );
