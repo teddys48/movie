@@ -210,7 +210,7 @@ const Home = () => {
                     <>
                       <div className=" w-full h-full p-1">
                         <img
-                          src={`https://image.tmdb.org/t/p/w500/${val.backdrop_path}`}
+                          src={`https://image.tmdb.org/t/p/w500/${val.poster_path}`}
                           width="auto"
                         />
                         <span className="flex w-full justify-center text-center">
@@ -235,7 +235,7 @@ const Home = () => {
                     <>
                       <div className=" w-full h-full p-1">
                         <img
-                          src={`https://image.tmdb.org/t/p/w500/${val.backdrop_path}`}
+                          src={`https://image.tmdb.org/t/p/w500/${val.poster_path}`}
                           width="auto"
                         />
                         <span className="flex w-full justify-center text-center">
@@ -260,7 +260,7 @@ const Home = () => {
                     <>
                       <div className=" w-full h-full p-1">
                         <img
-                          src={`https://image.tmdb.org/t/p/w500/${val.backdrop_path}`}
+                          src={`https://image.tmdb.org/t/p/w500/${val.poster_path}`}
                           width="auto"
                         />
                         <span className="flex w-full justify-center text-center">
