@@ -8,7 +8,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="flex w-full max-sm:flex-col  top-0 p-2 sticky bg-white/90 flex-row dark:bg-soft_dark/90 backdrop-blur-sm">
+      <div className="flex w-full max-sm:flex-col max-sm:space-y-2 top-0 p-2 sticky bg-white/90 flex-row dark:bg-soft_dark/90 backdrop-blur-sm">
         <div className="flex w-full justify-start items-center">
           <span>
             {!Boolean(sidebar) ? (
@@ -17,10 +17,16 @@ const Navbar = () => {
                 onClick={() => setSidebar(!Boolean(sidebar))}
               ></i>
             ) : (
-              <i
-                class="fa-solid fa-chevron-left max-sm:fa-solid fa-chevron-right"
-                onClick={() => setSidebar(!Boolean(sidebar))}
-              ></i>
+              <>
+                <i
+                  class="fa-solid fa-chevron-left max-sm:hidden"
+                  onClick={() => setSidebar(!Boolean(sidebar))}
+                ></i>
+                <i
+                  class="hidden max-sm:block fa-solid fa-chevron-right"
+                  onClick={() => setSidebar(!Boolean(sidebar))}
+                ></i>
+              </>
             )}
           </span>
         </div>

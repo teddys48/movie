@@ -3,9 +3,11 @@ import { useState, useEffect } from "react";
 
 const Home = () => {
   const [onWatch, setOnWatch] = useState([]);
+  const [upcoming, setUpcoming] = useState([]);
   const [popularMovie, setPopularMovie] = useState([]);
   const [bannerMovie, setBannerMovie] = useState([]);
   const [slide, setSlide] = useState(0);
+  const [topRated, setTopRated] = useState([]);
 
   const useInterval = () => {
     let randNumber = randomNumber();
@@ -83,9 +85,68 @@ const Home = () => {
       });
   };
 
+  const getTopRatedMovie = () => {
+    fetch(
+      "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1",
+      {
+        method: "GET",
+        headers: {
+          accept: "application/json",
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3MGQ3N2U1ZmRhYWM0YmY1Zjg2NGI1OTVkYWNjM2NjYSIsIm5iZiI6MTczMDc5NDMwMS40NzgwMTY2LCJzdWIiOiI2NzI5Y2RkMTA2ZGM4ODU5NjMyNDAwNWQiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.WZ9N-QAeLlw541YcK7Hpp0m6G1umwnLrI7LX5nW1af0",
+        },
+      }
+    )
+      .then((res) => {
+        console.log(
+          "get data",
+          res
+            .json()
+            .then((r) => {
+              setTopRated(r);
+            })
+            .catch((err) => {
+              console.log(err);
+            })
+        );
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const getUpcomingMovie = () => {
+    fetch("https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1", {
+      method: "GET",
+      headers: {
+        accept: "application/json",
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3MGQ3N2U1ZmRhYWM0YmY1Zjg2NGI1OTVkYWNjM2NjYSIsIm5iZiI6MTczMDc5NDMwMS40NzgwMTY2LCJzdWIiOiI2NzI5Y2RkMTA2ZGM4ODU5NjMyNDAwNWQiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.WZ9N-QAeLlw541YcK7Hpp0m6G1umwnLrI7LX5nW1af0",
+      },
+    })
+      .then((res) => {
+        console.log(
+          "get data",
+          res
+            .json()
+            .then((r) => {
+              setUpcoming(r);
+            })
+            .catch((err) => {
+              console.log(err);
+            })
+        );
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   useEffect(() => {
     getPopularMovie();
     getNowPlayingMovie();
+    getTopRatedMovie();
+    getUpcomingMovie();
   }, []);
 
   useEffect(() => {
@@ -141,7 +202,7 @@ const Home = () => {
 
         <div className="flex w-full">
           <div className="flex flex-col">
-            <span>Now Playing</span>
+            <span className="text-xl font-bold">Now Playing</span>
             <div className="flex w-full">
               <div className="grid grid-rows-5 grid-cols-4 max-xl::grid-col-3 max-sm:grid-cols-2">
                 {onWatch?.results?.map((val) => {
@@ -152,6 +213,59 @@ const Home = () => {
                           src={`https://image.tmdb.org/t/p/w500/${val.backdrop_path}`}
                           width="auto"
                         />
+                        <span className="flex w-full justify-center text-center">
+                          {val?.title}
+                        </span>
+                      </div>
+                    </>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="flex w-full">
+          <div className="flex flex-col">
+            <span className="text-xl font-bold">Top Rated</span>
+            <div className="flex w-full">
+              <div className="grid grid-rows-5 grid-cols-4 max-xl::grid-col-3 max-sm:grid-cols-2">
+                {topRated?.results?.map((val) => {
+                  return (
+                    <>
+                      <div className=" w-full h-full p-1">
+                        <img
+                          src={`https://image.tmdb.org/t/p/w500/${val.backdrop_path}`}
+                          width="auto"
+                        />
+                        <span className="flex w-full justify-center text-center">
+                          {val?.title}
+                        </span>
+                      </div>
+                    </>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="flex w-full">
+          <div className="flex flex-col space-y-3 w-full justify-center text-center">
+            <span className="text-xl font-bold">Upcoming</span>
+            <div className="flex w-full">
+              <div className="grid grid-rows-5 grid-cols-4 max-xl::grid-col-3 max-sm:grid-cols-2">
+                {upcoming?.results?.map((val) => {
+                  return (
+                    <>
+                      <div className=" w-full h-full p-1">
+                        <img
+                          src={`https://image.tmdb.org/t/p/w500/${val.backdrop_path}`}
+                          width="auto"
+                        />
+                        <span className="flex w-full justify-center text-center">
+                          {val?.title}
+                        </span>
                       </div>
                     </>
                   );
