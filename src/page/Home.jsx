@@ -91,7 +91,6 @@ const Home = () => {
   useEffect(() => {
     const a = setInterval(() => {
       let randNumber = randomNumber();
-      console.log("qwqwqwq");
       setSlide(randNumber == slide ? randomNumber() : randNumber);
     }, 10000);
     return () => clearInterval(a);
@@ -108,7 +107,7 @@ const Home = () => {
                 <div
                   className={
                     index == slide
-                      ? "flex justify-center items-center w-full h-96 max-lg:h-72 max-sm:h-28"
+                      ? "flex justify-center items-center w-full h-96 max-lg:h-72 max-sm:h-48"
                       : "hidden"
                   }
                   style={{
@@ -121,7 +120,7 @@ const Home = () => {
                   }}
                 >
                   <div className="flex w-full h-full p-10 justify-center bg-black bg-opacity-40">
-                    <span className="text-main flex justify-center text-6xl items-center max-sm:text-lg">
+                    <span className="text-main flex justify-center text-center text-6xl items-center max-sm:text-lg">
                       {bannerMovie[slide].title}
                     </span>
                   </div>
@@ -144,7 +143,7 @@ const Home = () => {
           <div className="flex flex-col">
             <span>Now Playing</span>
             <div className="flex w-full">
-              <div className="grid grid-rows-5 grid-cols-4 max-lg:grid-col-3 max-sm:grid-cols-2">
+              <div className="grid grid-rows-5 grid-cols-4 max-xl::grid-col-3 max-sm:grid-cols-2">
                 {onWatch?.results?.map((val) => {
                   return (
                     <>

@@ -2,9 +2,9 @@ import { useState } from "react";
 
 const ButtonToggle = () => {
   const [theme, setTheme] = useState(localStorage.getItem("color-theme"));
+  const [sidebar, setSidebar] = useState(localStorage.getItem("sidebar"));
 
   const onButtonClick = () => {
-    console.log("first");
     if (localStorage.getItem("color-theme")) {
       if (localStorage.getItem("color-theme") === "light") {
         document.documentElement.classList.add("dark");
@@ -28,6 +28,9 @@ const ButtonToggle = () => {
         setTheme("dark");
       }
     }
+
+    localStorage.setItem("sidebar", !Boolean(sidebar));
+    setSidebar(!Boolean(sidebar));
   };
   return (
     <>
