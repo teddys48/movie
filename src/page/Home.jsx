@@ -1,5 +1,7 @@
 import { Carousel } from "flowbite-react";
 import { useState, useEffect } from "react";
+import ListMovie from "../components/ListMovie";
+import Modal from "../components/Modal";
 
 const Home = () => {
   const [onWatch, setOnWatch] = useState([]);
@@ -8,6 +10,15 @@ const Home = () => {
   const [bannerMovie, setBannerMovie] = useState([]);
   const [slide, setSlide] = useState(0);
   const [topRated, setTopRated] = useState([]);
+  const [modalStatus, setModalStatus] = useState(false);
+
+  const closeModal = () => {
+    setModalStatus(!modalStatus);
+  };
+
+  const openModal = () => {
+    setModalStatus(!modalStatus);
+  };
 
   const useInterval = () => {
     let randNumber = randomNumber();
@@ -199,83 +210,14 @@ const Home = () => {
           })}
           {/* </Carousel> */}
         </div>
-
-        <div className="flex w-full">
-          <div className="flex flex-col">
-            <span className="text-xl font-bold">Now Playing</span>
-            <div className="flex w-full">
-              <div className="grid grid-rows-5 grid-cols-4 max-xl::grid-col-3 max-sm:grid-cols-2">
-                {onWatch?.results?.map((val) => {
-                  return (
-                    <>
-                      <div className=" w-full h-full p-1 ">
-                        <div className="w-full flex flex-col h-full dark:bg-black  p-2">
-                          <img
-                            src={`https://image.tmdb.org/t/p/w500/${val.poster_path}`}
-                            width="auto"
-                          />
-                          <span className="flex w-full text-2xl justify-center text-center">
-                            {val?.title}
-                          </span>
-                        </div>
-                      </div>
-                    </>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="flex w-full">
-          <div className="flex flex-col">
-            <span className="text-xl font-bold">Top Rated</span>
-            <div className="flex w-full">
-              <div className="grid grid-rows-5 grid-cols-4 max-xl::grid-col-3 max-sm:grid-cols-2">
-                {topRated?.results?.map((val) => {
-                  return (
-                    <>
-                      <div className=" w-full h-full p-1">
-                        <img
-                          src={`https://image.tmdb.org/t/p/w500/${val.poster_path}`}
-                          width="auto"
-                        />
-                        <span className="flex w-full justify-center text-center">
-                          {val?.title}
-                        </span>
-                      </div>
-                    </>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="flex w-full">
-          <div className="flex flex-col space-y-3 w-full justify-center">
-            <span className="text-xl font-bold">Upcoming</span>
-            <div className="flex w-full">
-              <div className="grid grid-rows-5 grid-cols-4 max-xl::grid-col-3 max-sm:grid-cols-2">
-                {upcoming?.results?.map((val) => {
-                  return (
-                    <>
-                      <div className=" w-full h-full p-1">
-                        <img
-                          src={`https://image.tmdb.org/t/p/w500/${val.poster_path}`}
-                          width="auto"
-                        />
-                        <span className="flex w-full justify-center text-center">
-                          {val?.title}
-                        </span>
-                      </div>
-                    </>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
-        </div>
+        <ListMovie
+          data={onWatch}
+          name={"Now Playing"}
+          modalStatus={modalStatus}
+          closeModal={closeModal}
+        ></ListMovie>
+        <ListMovie data={topRated} name={"Top Rated"}></ListMovie>
+        <ListMovie data={upcoming} name={"Upcoming"}></ListMovie>
       </div>
     </>
   );

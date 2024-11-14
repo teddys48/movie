@@ -10,8 +10,8 @@ const Sidebar = () => {
       <div
         className={
           sidebar
-            ? " max-sm:hidden flex w-60 border-r-2 flex-col h-screen rounded-xl max-sm:w-0 bg-white border-r-main dark:bg-soft_dark"
-            : "max-sm:block max-sm:w-40 max-sm:fixed z-50 bg-white dark:bg-soft_dark  w-14 flex justify-start flex-col h-screen border-r-2 rounded-xl"
+            ? " max-sm:hidden flex w-60 flex-col h-screen rounded-xl max-sm:w-0 bg-white border-r-main dark:bg-soft_dark"
+            : "max-sm:block max-sm:w-40 max-sm:fixed z-50 bg-white dark:bg-soft_dark  w-14 flex justify-start flex-col h-screen rounded-xl"
         }
       >
         <div className="hidden max-sm:flex max-sm:w-full max-sm:justify-end bg-white dark:bg-soft_dark max-sm:items-end max-sm:p-2">
@@ -36,7 +36,7 @@ const Sidebar = () => {
             }
           >
             {" "}
-            Logo
+            TeddMovie
           </span>
         </div>
 
