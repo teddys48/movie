@@ -53,8 +53,8 @@ const ListMovie = ({ name, data, modalStatus, closeModal }) => {
             />
           </div>
           <div className="flex w-full h-0">
-            <table className="table w-full h-full [&>*]:w-full">
-              <tbody className="[&>*]:w-full [&>*]:text-start">
+            <table className="table w-full max-h-full overflow-auto h-full [&>*]:w-full">
+              <tbody className="[&>*]:w-full overflow-auto [&>*]:text-start">
                 <tr>
                   <td>Title</td>
                   <td>:</td>
