@@ -108,7 +108,7 @@ const ListMovie = ({ name, data, modalStatus, closeModal }) => {
         <div className="flex flex-col ">
           <span className="text-2xl font-bold">{name}</span>
           <div className="flex w-full">
-            <div className="grid grid-rows-5  grid-cols-4 max-xl::grid-col-3 max-sm:grid-cols-2">
+            <div className="grid grid-rows-4  grid-cols-5 max-xl::grid-col-3 max-sm:grid-cols-2">
               {data?.results?.map((val) => {
                 return (
                   <>
